@@ -1,5 +1,7 @@
 export type ValidationMethod = {
-  [string: string]: string;
+  [key: string]: {
+    [key: string]: string;
+  };
 };
 
 export type TokenInfo = {
