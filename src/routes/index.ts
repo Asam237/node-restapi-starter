@@ -9,3 +9,5 @@ class Routes {
     app.use("/", new AuthRoute().router);
   }
 }
+
+export { Routes };
