@@ -35,7 +35,7 @@ class AuthController {
       if (!isMatch) return res.json({ message: "Login failed !" });
       const { _id } = user;
       const tokenInfo: TokenInfo = { id: _id };
-      const token: string = jwt.sign(tokenInfo, JWT_SECRET, {
+      const token: string = jwt.sign(tokenInfo, "secret", {
         expiresIn: EXPIRES,
       });
       return res.json({ user, token });

@@ -3,7 +3,7 @@ import { MONGO_URI } from "../config";
 
 export const connectToDb = async () => {
   try {
-    await connect(MONGO_URI);
+    await connect("mongodb://");
   } catch (error) {
     console.log(error);
   }

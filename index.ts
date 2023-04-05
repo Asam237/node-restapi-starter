@@ -4,7 +4,7 @@ import * as http from "http";
 import { PORT } from "./src/core/config";
 import { connectToDb } from "./src/core/connect/db";
 
-const app: express = express();
+const app = express();
 Routes.init(app);
 const server: http.Server = http.createServer(app);
 
