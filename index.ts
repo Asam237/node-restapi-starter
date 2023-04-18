@@ -8,15 +8,7 @@ const app = express();
 Routes.init(app);
 const server: http.Server = http.createServer(app);
 
-const main = () => {
-  try {
-    server.listen(PORT, async () => {
-      await connectToDb();
-      console.log(`[Server]: running on ${PORT}`);
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-main();
+server.listen(PORT, async () => {
+  await connectToDb();
+  console.log(`[Server]: running on ${PORT}`);
+});

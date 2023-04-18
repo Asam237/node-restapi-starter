@@ -12,7 +12,7 @@ class AuthRoute {
     this.routes();
   }
   routes = () => {
-    const prefix: string = "auth";
+    const prefix: string = "/auth";
     this.router.post(
       `${prefix}/create`,
       authValidator.validate(user.createUser),

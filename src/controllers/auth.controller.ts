@@ -20,6 +20,7 @@ class AuthController {
       return res.json({ user });
     } catch (error) {
       console.log(error);
+      return res.json({ message: "Error" });
     }
   }
   public static async login(
@@ -41,6 +42,7 @@ class AuthController {
       return res.json({ user, token });
     } catch (error) {
       console.log(error);
+      return res.json({ message: "Error" });
     }
   }
 }

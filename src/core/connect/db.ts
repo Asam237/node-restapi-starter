@@ -1,9 +1,8 @@
 import { connect, connection } from "mongoose";
-import { MONGO_URI } from "../config";
 
 export const connectToDb = async () => {
   try {
-    await connect("mongodb://");
+    await connect("mongodb://84.46.249.130/api-nodestarter");
   } catch (error) {
     console.log(error);
   }
