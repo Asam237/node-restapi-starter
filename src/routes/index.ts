@@ -7,21 +7,18 @@ import swaggerUI from "swagger-ui-express";
 class Routes {
   static init(app: express.Application) {
     const options = {
+      swagger: "2.0",
       definition: {
-        openapi: "3.1.0",
+        openapi: "3.0.0",
         info: {
-          title: "LogRocket Express API with Swagger",
+          title: "Node RestAPI starter",
           version: "0.1.0",
           description:
-            "This is a simple CRUD API application made with Express and documented with Swagger",
-          license: {
-            name: "MIT",
-            url: "https://spdx.org/licenses/MIT.html",
-          },
+            "This is an authentication application with json web token",
           contact: {
-            name: "LogRocket",
-            url: "https://logrocket.com",
-            email: "info@email.com",
+            name: "Abba Sali Aboubakar Mamate",
+            url: "https://abbasali.vercel.app",
+            email: "abbasalimokolo@email.com",
           },
         },
         servers: [
