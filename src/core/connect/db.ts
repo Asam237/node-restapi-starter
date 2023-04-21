@@ -2,7 +2,7 @@ import { connect, connection } from "mongoose";
 
 export const connectToDb = async () => {
   try {
-    await connect("mongodb://84.46.249.130/api-nodestarter");
+    await connect("mongodb://172.26.0.2/api-nodestarter");
   } catch (error) {
     console.log(error);
   }

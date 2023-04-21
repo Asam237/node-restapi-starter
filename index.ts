@@ -6,6 +6,7 @@ import { connectToDb } from "./src/core/connect/db";
 
 const app = express();
 Routes.init(app);
+console.log("Routes =>", Routes.init(app))
 const server: http.Server = http.createServer(app);
 
 server.listen(PORT, async () => {

@@ -1,11 +1,12 @@
 import { AuthRoute } from "./auth.routes";
 import * as bodyParser from "body-parser";
 import * as express from "express";
+import cors from "cors"
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
 
 class Routes {
-  static init(app: express.Application) {
+  static init(app: express.Application): void {
     const options = {
       swagger: "2.0",
       definition: {
@@ -27,11 +28,13 @@ class Routes {
           },
         ],
       },
-      apis: ["./routes/*.ts"],
+      apis: ["./swagger.js  "],
     };
-    const router = express.Router();
+    const router: express.Router = express.Router();
     const specs = swaggerJsdoc(options);
     app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }))
+    app.use(cors())
     app.use("/", router);
     app.use("/", new AuthRoute().router);
     app.use("/docs", swaggerUI.serve, swaggerUI.setup(specs));
