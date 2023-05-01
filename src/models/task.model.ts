@@ -17,3 +17,5 @@ const taskSchema: mongoose.Schema = new mongoose.Schema({
 
 const TaskModel: any = mongoose.model("Task", taskSchema)
 const taskUpdateParams: string[] = ["title", "description"]
+
+export {TaskModel, taskUpdateParams}
