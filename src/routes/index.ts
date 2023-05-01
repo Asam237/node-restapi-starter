@@ -4,6 +4,7 @@ import * as express from "express";
 import cors from "cors"
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
+import { TaskRoute } from "./task.route";
 
 class Routes {
   static init(app: express.Application): void {
@@ -37,6 +38,7 @@ class Routes {
     app.use(cors())
     app.use("/", router);
     app.use("/", new AuthRoute().router);
+    app.use("/", new TaskRoute().router)
     app.use("/docs", swaggerUI.serve, swaggerUI.setup(specs));
   }
 }
