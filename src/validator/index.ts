@@ -35,6 +35,9 @@ class Validator implements IValidator {
     user: {
       createUser: "createUser",
     },
+    task: {
+      createTask: "createTask"
+    }
   };
 }
 
