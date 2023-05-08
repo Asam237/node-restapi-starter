@@ -4,12 +4,10 @@ import * as jwt from "jsonwebtoken";
 import { UserModel } from "../models/user.model";
 import { TokenInfo } from "../core/types";
 import { EXPIRES, JWT_SECRET } from "../core/config";
+import { TaskModel } from "../models/task.model";
 
 class AuthController {
-  public static async register(
-    req: Request,
-    res: Response,
-  ): Promise<any> {
+  public static async register(req: Request, res: Response): Promise<any> {
     try {
       const { firstname, lastname, email }: any = req.body;
       const password: string = bcrypt.hashSync(req.body.password, 10);
@@ -22,22 +20,22 @@ class AuthController {
       return res.json({ message: "Error" });
     }
   }
-  public static async login(
-    req: Request,
-    res: Response,
-  ): Promise<any> {
+  public static async login(req: Request, res: Response): Promise<any> {
     const { email, password }: any = req.body;
     try {
       const user: any = await UserModel.findOne({ email });
       if (!user) return res.json({ message: "Login failed !" });
       const isMatch: boolean = bcrypt.compareSync(password, user.password);
       if (!isMatch) return res.json({ message: "Login failed !" });
+      const task: any = await TaskModel.find({ user: req.body._id }).populate(
+        "tasks"
+      );
       const { _id } = user;
       const tokenInfo: TokenInfo = { id: _id };
       const token: string = jwt.sign(tokenInfo, "secret", {
         expiresIn: EXPIRES,
       });
-      return res.json({ user, token });
+      return res.json({ user, token, task });
     } catch (error) {
       console.log(error);
       return res.json({ message: "Error" });

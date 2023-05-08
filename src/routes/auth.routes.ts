@@ -3,7 +3,7 @@ import { AuthController } from "../controllers/auth.controller";
 import Validator from "../validator";
 import authValidator from "../validator/auth.validator";
 
-const {user}: any = Validator.method;
+const { user }: any = Validator.method;
 
 class AuthRoute {
   public router: Router;
@@ -12,7 +12,6 @@ class AuthRoute {
     this.routes();
   }
   routes = () => {
-    console.log("Auth router")
     const prefix: string = "/auth";
     this.router.post(
       `${prefix}/create`,
