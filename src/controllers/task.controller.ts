@@ -25,7 +25,7 @@ class TaskController {
 
       //saving the modified user and task
       await user.save();
-      await task.save;
+      await task.save();
       return res.status(200).json({ task });
     } catch (error) {
       console.log(error);
