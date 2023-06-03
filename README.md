@@ -13,7 +13,7 @@ yarn install
 ```
 - Start Application
 ```bash
-yarn start
+yarn serve
 ```
 The application will be launched by [Nodemon](https://nodemon.com) so it's will restart automatically on file change
 
