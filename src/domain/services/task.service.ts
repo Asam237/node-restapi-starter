@@ -17,4 +17,4 @@ const destroyTaskService = async (id: any) => {
   return await TaskModel.deleteOne({ _id: id })
 }
 
-export default { createTaskService, oneTaskService, allTaskService, destroyTaskService};
+export default { createTaskService, oneTaskService, allTaskService, destroyTaskService };

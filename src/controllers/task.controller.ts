@@ -18,4 +18,19 @@ const createTaskController = async (req: Request, res: Response) => {
   return res.status(200).json({ task: createTask });
 };
 
-export { createTaskController };
+const oneTaskController = async (req: Request, res: Response) => {
+  const task = await taskService.oneTaskService(req.params.id)
+  return res.status(200).json({ task })
+}
+
+const allTaskController = async (req: Request, res: Response) => {
+  const tasks = await taskService.allTaskService()
+  return res.status(200).json({ tasks })
+}
+
+const destroyTaskController = async (req: Request, res: Response) => {
+  await taskService.destroyTaskService(req.params.id)
+  return res.status(200).json({ message: "Task delete success !" })
+}
+
+export { createTaskController, oneTaskController, allTaskController, destroyTaskController };
