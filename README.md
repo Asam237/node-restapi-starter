@@ -1,26 +1,21 @@
-## Introduction
+# Node Typescript Starter
 
-Clone of Spotify application
-<br/>
+This project contains a minimal starter for Node.js project with Typescript, ESLint and Prettier
 
-## Composition
+## Prerequisites
+- Node.js 16+
+- Yarn or NPM
 
-This starter kit is composed of:
-
-- [Node.js](https://nodejs.org)
-  <br/>
-- [Express.js](https://expressjs.com)
-  <br/>
-- [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken)
-  <br/>
-- [Validator](https://www.npmjs.com/package/validator)
-  <br/>
-- [Bcryptjs](https://www.npmjs.com/package/bcryptjs)
-  <br/>
-
-## Development
-
-## Deployment
+## Installation
+- Install dependencies
+```bash
+yarn install
+```
+- Start Application
+```bash
+yarn start
+```
+The application will be launched by [Nodemon](https://nodemon.com) so it's will restart automatically on file change
 
 ## Authors
 
