@@ -1,25 +1,11 @@
 import { Router } from "express";
-import { TaskController } from "../controllers/task.controller";
-import Validator from "../validator";
-import taskValidator from "../validator/task.validator";
+import * as taskController from "../controllers/task.controller";
 
-const { task }: any = Validator.method;
-
-class TaskRoute {
-  public router: Router;
-  constructor() {
-    this.router = Router();
-    this.routes();
-  }
-  routes = () => {
-    const prefix: string = "/tasks";
-    this.router.post(
-      `${prefix}/create`,
-      taskValidator.validate(task.createTask),
-      TaskController.create
-    );
-  };
-}
+const TaskRoute = () => {
+  const router = Router();
+  const prefix: string = "/tasks";
+  router.post(`${prefix}/create`, taskController.createTaskController);
+  return router;
+};
 
 export { TaskRoute };
-

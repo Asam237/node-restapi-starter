@@ -4,20 +4,27 @@ const taskSchema: mongoose.Schema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    unique: true,
   },
   description: {
     type: String,
     required: true,
   },
+  checked: {
+    type: Boolean,
+    default: false,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
   },
 });
 
-const TaskModel: any = mongoose.model("Task", taskSchema);
+const TaskModel = mongoose.model("Task", taskSchema);
 const taskUpdateParams: string[] = ["title", "description"];
 
 export { TaskModel, taskUpdateParams };
-

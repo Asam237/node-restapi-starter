@@ -1,13 +1,9 @@
 import mongoose from "mongoose";
 
 const userSchema: mongoose.Schema = new mongoose.Schema({
-  firstname: {
+  fullname: {
     type: String,
     required: true,
-  },
-  lastname: {
-    type: String,
-    requiref: true,
   },
   email: {
     type: String,
@@ -18,6 +14,10 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
   tasks: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -27,5 +27,6 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
 });
 
 const UserModel = mongoose.model("User", userSchema);
-const userUpdateParams: string[] = ["firstname", "lastname", "email"];
+const userUpdateParams: string[] = ["fullname"];
+
 export { UserModel, userUpdateParams };

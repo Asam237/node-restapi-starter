@@ -1,26 +1,21 @@
-import { Request, Response, NextFunction } from "express";
-import { TaskModel } from "../models/task.model";
-import { UserModel } from "../models/user.model";
+import { Request, Response } from "express";
+import { UserModel } from "../domain/models/user.model";
+import taskService from "../domain/services/task.service";
+import { CreateTaskInput } from "../shared/types/models";
 
-class TaskController {
-  public static async create(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ): Promise<any> {
-    try {
-      const { title, description }: any = req.body;
-      const user: any = await UserModel.findById({ _id: req.body.user });
-      const taskParams: any = { title, description, user };
-      const task: any = new TaskModel(taskParams);
-      user.tasks.push(task._id);
-      await task.save;
-      return res.status(200).json({ task });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
+const createTaskController = async (req: Request, res: Response) => {
+  const { checked, description, title }: CreateTaskInput = req.body;
+  const user = await UserModel.findById({ _id: req.body.user });
+  const createTask = await taskService.createTaskService({
+    checked,
+    description,
+    title,
+    user,
+  });
+  user?.tasks.push(createTask._id);
+  await user?.save();
+  await createTask.save();
+  return res.status(200).json({ task: createTask });
+};
 
-export { TaskController };
-
+export { createTaskController };
