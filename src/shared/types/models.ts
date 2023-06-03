@@ -14,5 +14,11 @@ export type CreateTaskInput = {
   description: string;
   checked: boolean;
   user: any;
+  comments?: any[]
 };
+
+export type CreateCommentInput = {
+  comment: string
+  task: any
+}
 
