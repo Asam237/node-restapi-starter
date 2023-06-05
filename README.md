@@ -27,6 +27,13 @@ Test the API with `Postman`
 
 Swagger: `http://localhost:3010/api-docs/`
 
+## Demo
+
+
+https://github.com/Asam237/node-restapi-starter/assets/34966088/4f73f515-2059-4d3e-b537-5796ee75a013
+
+
+
 ## Authors
 
 This project is maintained by:
