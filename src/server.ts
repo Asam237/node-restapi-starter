@@ -2,6 +2,8 @@ import express, { Application } from "express";
 import { CommentRoute } from "./routes/comment.route";
 import { TaskRoute } from "./routes/task.route";
 import { UserRoute } from "./routes/user.route";
+import * as swaggerUi from "swagger-ui-express"
+import * as swaggerDoc from "./swagger.json"
 
 export const setupRestEndpoints = (app: Application) => {
   const router = express.Router();
@@ -10,4 +12,5 @@ export const setupRestEndpoints = (app: Application) => {
   app.use("/", UserRoute());
   app.use("/", TaskRoute());
   app.use("/", CommentRoute());
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 };
